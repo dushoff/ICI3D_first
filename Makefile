@@ -102,6 +102,21 @@ EbolaFits:
 
 ######################################################################
 
+# Archive
+
+Archive += $(wildcard archive/*.pdf)
+
+archive/%.pdf: 
+	$(MAKE) archive
+	$(MAKE) currSlides.pdf
+	/bin/cp -f currSlides.pdf $@
+
+archive:
+	mkdir $@
+
+currSlides.pdf: evaluation.draft.pdf
+	$(copy)
+
 ## Clausius
 
 # log(P) = C-a/T
