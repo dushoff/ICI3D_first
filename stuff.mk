@@ -6,8 +6,11 @@
 
 msrepo = https://github.com/dushoff
 gitroot = ../
+Drop = ~/Dropbox/
 figdrop = ~/Dropbox/talkfigs
+imagedrop = ~/Dropbox/Lecture_images
 
+Sources += dushoff_local.mk
 -include local.mk
 -include $(gitroot)/local.mk
 export ms = $(gitroot)/makestuff

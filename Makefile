@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: evaluation.draft.pdf 
+target pngtarget pdftarget vtarget acrtarget: fitting.draft.pdf 
 
 ##################################################################
 
@@ -19,8 +19,13 @@ include stuff.mk
 
 Sources += beamer.fmt beamer.tmp
 
+## Model assessment lecture, given once at DAIDD; I don't remember what I said
 Sources += evaluation.txt
 evaluation.draft.pdf: talkdir/slidecomm.sty evaluation.txt
+
+## Likelihood fitting II (should have a better name)
+Sources += fitting.txt old_fit.txt
+fitting.draft.pdf: fitting.txt
 
 ##################################################################
 
@@ -28,9 +33,14 @@ evaluation.draft.pdf: talkdir/slidecomm.sty evaluation.txt
 
 vitamins.Rout: ciplots.Rout vitamins.R
 
+distance.Rout: distance.R
+
 ##################################################################
 
-## figs
+## figs; need to move these rules to step files, and do other cool tricks
+
+figs/deer.jpg:
+	wget -O $@ "https://yy1.staticflickr.com/8355/8414701990_dc1cd1b811_z.jpg"
 
 figs/obey_kitties.jpg:
 	wget -O $@ "http://img10.deviantart.net/9f66/i/2008/364/f/6/obey_the_kitties_by_gazzit.png"
@@ -92,10 +102,24 @@ talkdir/%: talkdir
 talkdir:
 	/bin/ln -s $(ms)/talk $@
 
-figs/%: figs
+# Doing figdrop for now; goal should be to have rules in makestuff; image co-ordination files in the project; and an image dropbox. 
 
+# Or maybe just move everything to lecture images?
+
+figs/%: figs
 figs:
 	$(LN) $(figdrop) $@
+
+images/%: images
+images:
+	$(LN) $(imagedrop) $@
+
+## Not chaining well! Maybe because of old WW-extra-implicit stuff? Maybe fixed?
+fitting/%: fitting
+	cd fitting && $(MAKE) $*
+
+fitting:
+	$(LN) $(gitroot)/fitting_code $@
 
 EbolaFits:
 	$(LN) ../Latent_incidence_fitting $@
