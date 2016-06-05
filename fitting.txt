@@ -19,6 +19,12 @@ MMED 2016
 
 Measles data
 
+BC
+
+	COLFIG data/ewmeas.Rout-1.pdf
+
+NC
+
 	Reconstruct the number of susceptibles
 
 	Divide the data into generations
@@ -27,11 +33,13 @@ Measles data
 
 	Predict
 
+EC
+
 ----------------------------------------------------------------------
 
 Why did I get the wrong answer?
 
-PICTURE
+FIG data/ewmeas.Rout-1.pdf
 
 ----------------------------------------------------------------------
 
@@ -43,7 +51,7 @@ Why did I get the wrong answer?
 
 	Stochasticity in disease observation and recording
 
-	Stochasticity in the transmission
+	Stochasticity in transmission
 
 	Multi-parameter estimation
 
@@ -79,7 +87,7 @@ No error
 
 Observation error only
 
-	Shooting models
+	Shooting 
 
 		Point your model at the target
 		
@@ -91,9 +99,27 @@ Observation error only
 
 ----------------------------------------------------------------------
 
+Shooting
+
+FIG data/cards.Rout-0.pdf
+
+----------------------------------------------------------------------
+
+Shooting
+
+FIG data/cards.Rout-1.pdf
+
+----------------------------------------------------------------------
+
+Shooting
+
+FIG data/cards.Rout-2.pdf
+
+----------------------------------------------------------------------
+
 Process error only
 
-	Stepping models
+	Stepping
 
 		Look at each step separately.
 		
@@ -103,7 +129,35 @@ Process error only
 
 ----------------------------------------------------------------------
 
-Cards data
+Stepping
+
+FIG data/cards.Rout-3.pdf
+
+----------------------------------------------------------------------
+
+Stepping
+
+FIG data/cards.Rout-4.pdf
+
+----------------------------------------------------------------------
+
+Stepping
+
+FIG data/cards.Rout-5.pdf
+
+----------------------------------------------------------------------
+
+Comparing approaches
+
+BC
+
+COLFIG data/cards.Rout-2.pdf
+
+NC
+
+COLFIG data/cards.Rout-5.pdf
+
+EC
 
 ----------------------------------------------------------------------
 
@@ -113,15 +167,23 @@ Observation and process error
 
 		We need to keep track of, and integrate over, things that we don't observe
 
-MEASLES PICTURE
+FIG data/ewmeas.Rout-1.pdf
 
 ----------------------------------------------------------------------
 
-SEC Fitting and likelihood
+SEC Fitting 
 
 ----------------------------------------------------------------------
 
 How to fit?
+
+	Solving an equation
+
+	By eye (fiddling with parameters)
+
+	\emph{Minimizing a distance function}
+
+	Likelihood
 
 ----------------------------------------------------------------------
 
@@ -167,7 +229,7 @@ NC
 
 	$$D = \sum_i{(y_i - \hat y_i)^2}$$
 
-	COMMENT SCALEFIG 0.9 figs/elegant.jpg
+	SCALEFIG 0.9 images/elegant.jpg
 
 EC
 
@@ -297,34 +359,41 @@ EC
 
 A more realistic error distribution
 
-	If my model predicts 30% prevalence in a city of 10,000 people, what
-	distribution should I use to calculate the likelihood?
+	My case counts are \emph{individuals}
 
-		The binomial.
+	What distributions can I use to reflect that?
 
-		This never works
+	WRONG!
 
-		Why not?
+	\emph{Sorry:}
+
+		OK, technically it's right, but you shouldn't do it.
 
 ----------------------------------------------------------------------
 
-The world is a mess
+Reality is complicated
 
 BC
 
-SCALEFIG 0.6 images/crowd.jpg
+COLFIG images/crowd.jpg
 
 NC
 
-	Binomial assumes the people you examine are independent (conditional
-	on being in your population)
+	Poisson and binomial reflect \emph{only} individual-level variation
 
-	\emph{Negative binomial} is the simplest way to relax this assumption
+		No temporal variation
+		
+		No clustered sampling
+		
+		\ldots
 
 EC
 
 ----------------------------------------------------------------------
 
+Distribution diagram
+
+----------------------------------------------------------------------
 
 Negative binomial fits
 
@@ -352,7 +421,7 @@ Comparison
 
 		Negative binomial: $r$ = 0.90--1.14/wk
 
-	How would you test this?
+	How would you test these methods?
 
 ----------------------------------------------------------------------
 
@@ -369,3 +438,129 @@ NC
 EC
 
 ----------------------------------------------------------------------
+
+TSEC Modern approaches
+
+	Why are people using model worlds with no observation error?
+
+		or no process error?
+
+	Sometimes they are good enough (model validation)
+
+	Combining both is \emph{hard}
+
+----------------------------------------------------------------------
+
+Filtering
+
+	Filtering is a little like shooting
+
+		Simulate from beginning to end, but use \emph{stochastic} simulations
+
+	You need a lot of simulations, and often ways of selecting and refining them
+
+	A popular, state-of-the-art method is implemented in the R package
+	pomp 
+
+----------------------------------------------------------------------
+
+Latent variable methods
+
+	Latent variable methods are a little like stepping
+
+		But we step to and from unknown values (our latent variables), so we need a way of exploring many possibilities
+
+	Popular, state-of-the-art methods are available in the R packages rjags and rstan
+
+----------------------------------------------------------------------
+
+Multi-parameter inference
+
+	Modern methods are already hard, and when you consider various sources of uncertainty, you're really on the bleeding edge
+
+	Many high-profile models for Ebola, for example failed to consider process error.
+
+	The biggest paper talking about process error neglected uncertainty in generation intervals
+
+	Once you do multi-parameter inference, you may find that confidence intervals are very large -- this may reflect the reality of knowledge, but may not make you look good
+
+----------------------------------------------------------------------
+
+Assessing and reporting uncertainty
+
+FIG hybrid/sierraLeone.hybrid.compare.Rout-0.pdf
+
+----------------------------------------------------------------------
+
+Assessing and reporting uncertainty
+
+FIG hybrid/sierraLeone.hybrid.compare.Rout-1.pdf
+
+----------------------------------------------------------------------
+
+Assessing and reporting uncertainty
+
+FIG hybrid/sierraLeone.hybrid.compare.Rout-2.pdf
+
+----------------------------------------------------------------------
+
+Assessing and reporting uncertainty
+
+FIG hybrid/sierraLeone.hybrid.compare.Rout-3.pdf
+
+----------------------------------------------------------------------
+
+
+Assessing and reporting uncertainty
+
+FIG hybrid/sierraLeone.hybrid.compare.Rout-4.pdf
+
+----------------------------------------------------------------------
+
+Assessing and reporting uncertainty
+
+FIG hybrid/sierraLeone.hybrid.compare.Rout-5.pdf
+
+----------------------------------------------------------------------
+
+SEC Maximum likelihood and Bayesian inference
+
+----------------------------------------------------------------------
+
+Likelihood
+
+	Maximum likelihood and likelihood are not the same thing
+
+	Bayesian approaches and frequentist approaches (including maximum likelihood) \emph{both} depend on calculating (or approximating) likelihood
+
+----------------------------------------------------------------------
+
+Frequentist inference
+
+	To do frequentist inference on these complicated likelihoods, we need to:
+
+		estimate likelihoods
+
+		find the maximum likelihood
+
+		use the likelihood ratio test to find confidence intervals
+
+	This is hard
+
+----------------------------------------------------------------------
+
+Bayesian inference
+
+	To do Bayesian inference on these complicated likelihoods, we need to:
+
+		construct prior distributions
+
+		estimate likelihoods
+
+		estimate the posterior
+
+	Also hard, but sometimes easier than the frequentist approach
+
+----------------------------------------------------------------------
+
+

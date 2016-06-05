@@ -20,10 +20,12 @@ include stuff.mk
 Sources += beamer.fmt beamer.tmp
 
 ## Model assessment lecture, given once at DAIDD; I don't remember what I said
+## Add comments this time through?
 Sources += evaluation.txt
 evaluation.draft.pdf: talkdir/slidecomm.sty evaluation.txt
 
-## Likelihood fitting II (should have a better name)
+## Likelihood fitting II (should have a better name); started at MMED 2016
+## Delete old_fit the next time you think of it
 Sources += fitting.txt old_fit.txt
 fitting.draft.pdf: fitting.txt
 
@@ -121,8 +123,20 @@ fitting/%: fitting
 fitting:
 	$(LN) $(gitroot)/fitting_code $@
 
+## Old directory
 EbolaFits:
 	$(LN) ../Latent_incidence_fitting $@
+
+## Corresponding new directory
+hybrid/%: hybrid ;
+hybrid:
+	$(LN) ../hybrid_fitting $@
+
+data/%: data
+	cd $< && make $*
+
+data:
+	$(LN) ../Disease_data $@
 
 ######################################################################
 
