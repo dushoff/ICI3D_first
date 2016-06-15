@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: fitting.draft.pdf 
+target pngtarget pdftarget vtarget acrtarget: evaluation.pages 
 
 ##################################################################
 
@@ -23,11 +23,16 @@ Sources += beamer.fmt beamer.tmp
 ## Add comments this time through?
 Sources += evaluation.txt
 evaluation.draft.pdf: talkdir/slidecomm.sty evaluation.txt
+evaluation.pages: evaluation.draft.pdf
+	/bin/cp -f $< ~/git/MMED2016/pages/lectures/
+
 
 ## Likelihood fitting II (should have a better name); started at MMED 2016
 ## Delete old_fit the next time you think of it
-Sources += fitting.txt old_fit.txt
+Sources += fitting.txt
 fitting.draft.pdf: fitting.txt
+fitting.pages: fitting.draft.pdf
+	/bin/cp -f $< ~/git/MMED2016/pages/lectures/
 
 ##################################################################
 
@@ -43,6 +48,12 @@ distance.Rout: distance.R
 
 figs/deer.jpg:
 	wget -O $@ "https://yy1.staticflickr.com/8355/8414701990_dc1cd1b811_z.jpg"
+
+figs/stepping.jpg:
+	wget -O $@ "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Stepping_stones%2C_Hebden%2C_bench.jpg/1024px-Stepping_stones%2C_Hebden%2C_bench.jpg"
+
+figs/machine.jpg:
+	wget -O $@ "https://i.ytimg.com/vi/YFIFt2DI-sY/hqdefault.jpg"
 
 figs/obey_kitties.jpg:
 	wget -O $@ "http://img10.deviantart.net/9f66/i/2008/364/f/6/obey_the_kitties_by_gazzit.png"
@@ -118,12 +129,13 @@ images:
 
 ## Not chaining well! Maybe because of old WW-extra-implicit stuff? Maybe fixed?
 fitting/%: fitting
-	cd fitting && $(MAKE) $*
+#	cd fitting && $(MAKE) $*
 
 fitting:
 	$(LN) $(gitroot)/fitting_code $@
 
 ## Old directory
+EbolaFits/%: EbolaFits ;
 EbolaFits:
 	$(LN) ../Latent_incidence_fitting $@
 
@@ -133,7 +145,7 @@ hybrid:
 	$(LN) ../hybrid_fitting $@
 
 data/%: data
-	cd $< && make $*
+#	cd $< && $(MAKE) $*
 
 data:
 	$(LN) ../Disease_data $@

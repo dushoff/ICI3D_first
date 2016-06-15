@@ -87,15 +87,23 @@ No error
 
 Observation error only
 
-	Shooting 
+BC
 
-		Point your model at the target
-		
-		Give it starting conditions and parameters
-		
-		Let it go
+	Point your model at the target
+	
+	Give it starting conditions and parameters
+	
+	Let it go
 
-		Compare final results to observations
+	Compare final results to observations
+
+NC
+
+\textbf{Shooting}
+
+COLFIG figs/machine.jpg
+
+EC
 
 ----------------------------------------------------------------------
 
@@ -119,13 +127,21 @@ FIG data/cards.Rout-2.pdf
 
 Process error only
 
-	Stepping
+BC
 
-		Look at each step separately.
-		
-		See how the model is doing for that step.
+	Look at each step separately.
+	
+	See how the model is doing for that step.
 
-		Reset based on observed data before taking the next step
+	Reset based on observed data before taking the next step
+
+NC
+
+\textbf{Stepping}
+
+COLFIG figs/stepping.jpg
+
+EC
 
 ----------------------------------------------------------------------
 
@@ -195,9 +211,9 @@ SCALEFIG 0.6 distance.Rout-0.png
 
 NC
 
-	$$D = \sum_i{y_i - \hat y_i}$$
+$$D = \sum_i{y_i - \hat y_i}$$
 
-	SCALEFIG 0.4 figs/deer.jpg
+SCALEFIG 0.4 figs/deer.jpg
 
 EC
 
@@ -211,9 +227,9 @@ SCALEFIG 0.6 distance.Rout-1.png
 
 NC
 
-	$$D = \sum_i{|y_i - \hat y_i|}$$
+$$D = \sum_i{|y_i - \hat y_i|}$$
 
-	SCALEFIG 0.9 figs/mpaka.jpg
+SCALEFIG 0.9 figs/mpaka.jpg
 
 EC
 
@@ -227,9 +243,9 @@ SCALEFIG 0.6 distance.Rout-2.png
 
 NC
 
-	$$D = \sum_i{(y_i - \hat y_i)^2}$$
+$$D = \sum_i{(y_i - \hat y_i)^2}$$
 
-	SCALEFIG 0.9 images/elegant.jpg
+SCALEFIG 0.9 images/elegant.jpg
 
 EC
 

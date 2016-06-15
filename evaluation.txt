@@ -9,9 +9,9 @@ Jonathan Dushoff, McMaster University
 
 \vfill
 
-DAIDD 2015
+MMED 2016
 
-\url{http://www.ici3d.org/daidd/}
+\url{http://www.ici3d.org/mmed/}
 
 \vfill
 
@@ -21,9 +21,9 @@ Do I have a good model?
 
 	What is my model trying to accomplish?
 
-		Evaluating plausibility; 
-		
 		Generating hypotheses
+
+		Evaluating plausibility
 
 		Prediction
 
@@ -79,13 +79,13 @@ HIGHFIG figs/heliocentric.jpg
 
 What causes cholera?
 
-HIGHFIG figs/choleraMap.jpg
+WIDEFIG Farr.png
 
 ----------------------------------------------------------------------
 
 What causes cholera?
 
-WIDEFIG Farr.png
+HIGHFIG figs/choleraMap.jpg
 
 ----------------------------------------------------------------------
 
@@ -111,7 +111,7 @@ Coverage
 	world, then you _know the right answer_!
 
 SIDEFIG 0.7 figs/SierraLeoneValidation.jpg
-	
+
 	The right answer should be inside your 95% confidence interval 95% of
 	the time
 
@@ -137,24 +137,28 @@ Precision
 Bias?
 
 	Nobody wants to be biased 
-	
-	Good coverage and good precision, automatically ensures an
-	_asymptotically_ unbiased estimator
 
-	Bias means that the mean expected prediction is the true value
+	You _need_ to be _asymptotically_ unbiased
 
-		Practical importance unclear
+		Good coverage and good precision assure this
+
+	Not so clear you need to be _absolutely_ unbiased
+
+		Bias is the difference between the _mean_ expected prediction and the
+		true value
 
 		Scale dependent: an unbiased estimate of $\gamma$ is
-		automatically a biased estimate of $D$ (but still can be
-		asymptotically unbiased)
+		automatically a biased estimate of $D$ (but not
+		asymptotically biased)
+
+		Maybe the median would be a better measure
 
 ----------------------------------------------------------------------
 
 Accuracy?
 
 	Nobody wants to be inaccurate
-	
+
 	Good coverage and good precision should guarantee good accuracy
 
 ----------------------------------------------------------------------
@@ -167,11 +171,21 @@ SIGHFIG 0.7 figs/Earth.jpg
 
 ----------------------------------------------------------------------
 
-SUB Goodness of fit
+TSUB Goodness of fit
+
+	Goodness of fit \emph{statistics} describe how well a model prediction
+	matches observed data
+
+	Goodness of fit \emph{tests} attempt to determine whehter the observed
+	difference between model and data is statistically significant
 
 ----------------------------------------------------------------------
 
-A disease-incidence model
+NOSLIDE A disease-incidence model
+
+COMMENT Do I like this? Am I thinking clearly about it?
+
+I like the picture at least.
 
 SUBH Good for almost any disease
 
@@ -192,11 +206,31 @@ EC
 
 ----------------------------------------------------------------------
 
-Your null model is false!
+Your model is false!
+
+BC
+
+	A goodness of fit test won't make it true
+
+	You can ``pass'' a goodness of fit test by:
+
+		having a good model
+
+		having bad data
+
+		choosing an inappropriate way to compare
 
 	So why do we use P values at all in biology?
 
+NC
+
+SIGHFIG 0.75 figs/godDice.jpg
+
+EC
+
 ----------------------------------------------------------------------
+
+NOSLIDE
 
 Vitamin study
 
@@ -228,8 +262,10 @@ Goodness of fit test
 
 	Can we see the difference clearly?
 
-		If no, model may be good or bad. If good, we can't add any more
-		complexity based on current data
+		If no, model may be good or bad. 
+		
+			We probably can't add any more complexity based on current
+			data
 
 		If yes, model may be good or bad. We _may_ be able to add more
 		complexity based on current data
@@ -373,6 +409,14 @@ Evaluation
 
 ----------------------------------------------------------------------
 
-Thank you
+Conclusion
 
-WIDEFIG figs/prometheus.jpg
+SIDEFIG 0.8 figs/prometheus.jpg
+
+\vfill
+
+Essentially, all models are wrong, but some are useful.
+
+-- Box and Draper (1987), \emph{Empirical Model Building \ldots}
+
+\vfill

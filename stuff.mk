@@ -4,6 +4,8 @@
 	-cd $(dir $(ms)) && rm -rf .$(notdir $(ms))
 	touch $@
 
+PUSHDIR = /home/dushoff/git/MMED2016/pages/lectures/
+
 msrepo = https://github.com/dushoff
 gitroot = ../
 Drop = ~/Dropbox/
