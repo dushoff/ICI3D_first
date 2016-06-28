@@ -1,8 +1,9 @@
 # ICI3D
+## Lectures for ICI3D and related (e.g., NTU)
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: evaluation.pages 
+target pngtarget pdftarget vtarget acrtarget: dynamics.draft.pdf 
 
 ##################################################################
 
@@ -17,22 +18,40 @@ include stuff.mk
 
 ## Lecture
 
+## Beamer stuff is copied _by default_ from talk directory. I have changed it to r/w form r/o. Need to do a real modularization: want to be able to "mark" slides for inclusion in different versions.
+
 Sources += beamer.fmt beamer.tmp
 
-## Model assessment lecture, given once at DAIDD; I don't remember what I said
-## Add comments this time through?
+##################################################################
+
+## Model assessment lecture, given first at DAIDD 2015; I don't remember what I said for all the slides. Worked OK at MMED 2016, but should be reworked, with better notes about what I'm thinking.
+
 Sources += evaluation.txt
 evaluation.draft.pdf: talkdir/slidecomm.sty evaluation.txt
 evaluation.pages: evaluation.draft.pdf
 	/bin/cp -f $< ~/git/MMED2016/pages/lectures/
 
-
 ## Likelihood fitting II (should have a better name); started at MMED 2016
-## Delete old_fit the next time you think of it
 Sources += fitting.txt
 fitting.draft.pdf: fitting.txt
 fitting.pages: fitting.draft.pdf
 	/bin/cp -f $< ~/git/MMED2016/pages/lectures/
+
+## SIR model family lecture
+# ~/git/SIR_model_family/
+
+## Heterogeneity lecture
+# ~/Dropbox/ICI3D/WorkingWiki-export/Heterogeneity_lecture
+
+## Philosophy lecture
+# ~/Dropbox/ICI3D/WorkingWiki-export/Philosophy_lecture
+
+##################################################################
+# Developing for NTU
+# Notes
+Sources += ntu.txt
+
+dynamics.draft.pdf: dynamics.txt
 
 ##################################################################
 
@@ -45,6 +64,8 @@ distance.Rout: distance.R
 ##################################################################
 
 ## figs; need to move these rules to step files, and do other cool tricks
+
+## Mostly using images/ directory for figs now
 
 figs/deer.jpg:
 	wget -O $@ "https://yy1.staticflickr.com/8355/8414701990_dc1cd1b811_z.jpg"
@@ -126,6 +147,24 @@ figs:
 images/%: images
 images:
 	$(LN) $(imagedrop) $@
+
+exponential/%: exponential
+	cd exponential && $(MAKE) $*
+exponential:
+	$(LN) $(gitroot)/Exponential_figures $@
+
+family/%: family
+	cd family && $(MAKE) $*
+
+family:
+	$(LN) $(gitroot)/SIR_model_family $@
+
+SIR_sims:
+SIR_sims/%: SIR_sims
+	cd SIR_sims && $(MAKE) $*
+
+SIR_sims:
+	$(LN) $(gitroot)/SIR_simulations $@
 
 ## Not chaining well! Maybe because of old WW-extra-implicit stuff? Maybe fixed?
 fitting/%: fitting

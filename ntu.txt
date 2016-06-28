@@ -1,0 +1,12 @@
+
+Tutorial
+
+* dynamical models as a bridge
+
+* simple models (discrete and continuous time, exponential growth)
+
+Lectures
+
+* Fitting models to data
+
+* Statistics and statistical philosophy
