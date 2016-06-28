@@ -1,0 +1,445 @@
+
+Introduction to dynamical modeling
+
+Jonathan Dushoff, McMaster University
+
+\url{http://lalashan.mcmaster.ca/DushoffLab}
+
+\vfill
+
+2016 Summer Course on Mathematical Modeling and Analysis of 
+Infectious Diseases
+
+\vfill
+
+National Taiwan University
+
+\vfill
+
+----------------------------------------------------------------------
+
+Dynamic modeling
+
+SUBH Connects scales
+
+BC
+
+	Start with rules about how things change in short time steps
+
+		Usually based on \emph{individuals}
+
+SCALEFIG 0.45 images/trans.jpg
+
+NC
+
+	Calculate results over longer time periods
+
+		Usually about \emph{populations}
+
+SCALEFIG 0.6 data/ewmeas.Rout.pdf
+
+EC
+
+----------------------------------------------------------------------
+
+Example: Dandelions
+
+BC
+
+	Start with one dandelion; it produces 100 seeds, of which only
+	2% survive to reproduce.
+
+	Seeds that survive to reproduce will produce 100 seeds after 1 year
+	next year.
+
+	How many dandelions after 3 years?
+
+NC
+
+SIDEFIG 0.6 images/dandy_field.jpg
+
+EC
+
+----------------------------------------------------------------------
+
+Model worlds
+
+	A dynamic model is based on a model world
+
+	The model world has \emph{enough} assumptions to allow us to calculate
+	dynamics
+
+	The model world is \emph{simpler} than the real world
+
+	Essentially, all models are wrong, but some are useful.  -- Box and
+	Draper (1987), \emph{Empirical Model Building \ldots}
+
+----------------------------------------------------------------------
+
+Model result
+
+	If each individual is reproducing independently at each time step, the
+	population changes \emph{exponentially}
+
+		it is \emph{multiplied} by the same amount in each step.
+
+SIGHFIG 0.7 exponential/ntu.Rout-0.pdf
+
+----------------------------------------------------------------------
+
+Scales
+
+	The difference between 1 and 10 is the same as the difference between 10
+	and what?
+
+		\emph{additive} difference:
+
+		\emph{multiplicative} difference:
+
+----------------------------------------------------------------------
+
+Scales
+
+BC
+
+COLFIG exponential/ntu.Rout-0.pdf
+
+	Linear scale
+
+	1 to 10 = 10 to 19
+
+NC
+
+COLFIG exponential/ntu.Rout-1.pdf
+
+	Log scale
+
+	1 to 10 = 10 to 19
+
+EC
+
+----------------------------------------------------------------------
+
+Exponential change
+
+	We can have exponential \emph{growth} (population goes up)
+
+	or exponential \emph{decline} (population goes down)
+
+	What if we spray the dandelions, so that each seed only has 0.5% chance
+	of survival?
+
+----------------------------------------------------------------------
+
+Exponential decline
+
+BC
+
+COLFIG exponential/ntu.Rout-2.pdf
+
+	Linear scale
+
+	1 to 10 = 10 to 19
+
+NC
+
+COLFIG exponential/ntu.Rout-3.pdf
+
+	Log scale
+
+	1 to 10 = 10 to 100
+
+EC
+
+----------------------------------------------------------------------
+
+Time steps
+
+	Dynamic models can use
+	
+		\emph{discrete time}: we model the population at specific time points
+	
+		\emph{continuous time}: we model time smoothly
+
+	Which kind of model is the dandelion model?
+
+----------------------------------------------------------------------
+
+Randomness
+
+	Do our rules tell us exactly what is going to happen?
+
+	If we have 1 dandelion this year, do we expect exactly two dandelions
+	next year?
+
+		Do we expect exactly 1/2 of a dandelion?
+
+	\emph{Deterministic models}: rules describe exactly what will happen
+
+	\emph{Stochastic models}: rules describe a range of things that
+	\emph{might} happen
+
+----------------------------------------------------------------------
+
+Stochastic model
+
+BC
+
+COLFIG exponential/ntu.Rout-4.pdf
+
+NC
+
+COLFIG exponential/ntu.Rout-5.pdf
+
+EC
+
+----------------------------------------------------------------------
+
+Bacteria
+
+BC
+
+	Imagine we have some bacteria in a tank
+
+	They are continuously dividing, and continuously dying
+
+NC
+
+COLFIG images/violet_bacteria.jpg
+
+EC
+
+----------------------------------------------------------------------
+
+Bacteria
+
+	Model world
+
+		The bacteria:
+		
+			die at a constant \emph{per capita} rate
+		
+			divide at a constant \emph{per capita} rate
+
+	Model
+
+		$\ds \frac{dN}{dt} = (b-d)N $
+
+----------------------------------------------------------------------
+
+Model result
+
+BC
+
+COLFIG exponential/growth.Rout-2.pdf 
+
+	Population grows \emph{exponentially}
+
+NC
+
+COLFIG exponential/growth.Rout-3.pdf 
+
+	As long as $b>d$
+
+EC
+
+----------------------------------------------------------------------
+
+Describing a model
+
+	\textbf{Model structure:} what are the rules that our model is following?
+
+		Each individual is dividing and dying independently at a fixed rate
+
+	\textbf{Parameters:} what quantities (with units) determine how the
+	rules are working
+
+		Birth rate is 0.04/day
+
+	\textbf{State variables:} what changing quantities are we modeling?
+
+		The number of bacteria
+
+----------------------------------------------------------------------
+
+Simple models of disease spread
+
+SUBH Divide people into categories:
+
+DIAGRAM family/sir.three.pdf
+
+	Susceptible: can be infected
+
+	Infectious: can infect others
+
+	Recovered: cannot be infected
+
+----------------------------------------------------------------------
+
+What determines transition rates?
+
+DIAGRAM family/sir.three.pdf
+
+	People get better independently
+
+	People get infected by infectious people
+
+----------------------------------------------------------------------
+
+Conceptual modeling
+
+DIAGRAM family/sir.three.pdf
+
+SCALEFIG 0.6 family/thinker.jpg
+
+----------------------------------------------------------------------
+
+Conceptual modeling
+
+DIAGRAM family/sir.three.pdf
+
+	What is the final result?
+
+	When does disease increase, decrease?
+
+----------------------------------------------------------------------
+
+Dynamic implementation
+
+DIAGRAM family/sir.three.pdf
+
+	Requires assumptions about time distributions
+
+	The \emph{conceptually simplest} implementation uses
+	Ordinary Differential Equations (ODEs)
+
+		Other options may be more realistic
+
+		Or simpler in practice
+
+----------------------------------------------------------------------
+
+Recovery
+
+DIAGRAM family/sir.three.pdf
+
+	Infectious people recover at \emph{per capita}
+	rate $\gamma$
+
+		Total recovery rate is $\gamma I$
+
+		Mean time infectious is $D = 1/\gamma$
+
+----------------------------------------------------------------------
+
+Transmission
+
+DIAGRAM family/sir.three.pdf
+
+	Susceptible people get infected by:
+
+		Going around and contacting people (rate $c$)
+
+		Some of these people are infectious (proportion $I/N$)
+
+		Some of these contacts are effective (proportion $p$)
+
+	Per capita rate of becoming infected is $c p I/N \equiv \beta
+	I/N$
+
+	Population-level transmission rate is ${\cal T} = \beta SI/N$
+
+----------------------------------------------------------------------
+
+Another perspective on transmission
+
+DIAGRAM family/sir.three.pdf
+
+	Infectious people infect others by:
+
+		Going around and contacting people (rate $c$)
+
+		Some of these people are susceptible (proportion $S/N$)
+
+		Some of these contacts are effective (proportion $p$)
+
+	Per capita rate of infecting others is $c p S/N \equiv \beta
+	S/N$
+
+	Population-level transmission rate is ${\cal T} = \beta SI/N$
+
+----------------------------------------------------------------------
+
+ODE implementation
+
+DIAGRAM family/sir.three.pdf
+
+DIAGRAM family/sirodes.const.pdf
+
+----------------------------------------------------------------------
+
+ODE implementation
+
+BC
+
+COLFIG SIR_sims/burnout.plots.Rout-0.pdf
+
+	Disease starts to decline when number of susceptibles is small
+
+NC
+
+COLFIG SIR_sims/burnout.plots.Rout-1.pdf
+
+	Not everyone will get infected
+
+EC
+
+----------------------------------------------------------------------
+
+ODE assumptions
+
+BC
+
+SCALEFIG 0.8 family/stirrer.jpg
+
+NC
+
+	Lots and lots of people
+
+	Perfectly mixed
+
+EC
+
+----------------------------------------------------------------------
+
+Closing the circle
+
+DIAGRAM family/sirs.three.pdf
+
+DIAGRAM family/sirbd.three.pdf
+
+----------------------------------------------------------------------
+
+Tendency to oscillate
+
+PORTFIG family/comp0.pdf
+
+Modeling individuals as individuals usually requires a \emph{stochastic}
+model
+
+----------------------------------------------------------------------
+
+With individuality
+
+PORTFIG family/comp.pdf
+
+----------------------------------------------------------------------
+
+Summary
+
+	Dynamics are an essential tool to link scales
+
+	Very simple models can provide useful insights
+
+	More complex models can provide more detail, but also require more
+	assumptions, and more choices

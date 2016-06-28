@@ -51,8 +51,10 @@ fitting.pages: fitting.draft.pdf
 # Notes
 Sources += ntu.txt
 
+Sources += dynamics.txt
 dynamics.draft.pdf: dynamics.txt
 
+Sources += foundations.txt
 foundations.draft.pdf: foundations.txt
 
 ##################################################################

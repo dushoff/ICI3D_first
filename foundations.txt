@@ -1,0 +1,109 @@
+
+Mathematical foundations for dynamics
+
+Jonathan Dushoff, McMaster University
+
+\url{http://lalashan.mcmaster.ca/DushoffLab}
+
+\vfill
+
+2016 Summer Course on Mathematical Modeling and Analysis of 
+Infectious Diseases
+
+\vfill
+
+National Taiwan University
+
+\vfill
+
+----------------------------------------------------------------------
+
+Modeling decline
+
+	We have some bacteria in a tank
+
+	They have no food, so they are simply dying at a \emph{per capita} rate
+	of 0.02/hr.
+
+	If the current density is 100 bacteria/ml, what will be the density
+	after 1 hr?
+
+	What will be the density after 1 wk?
+
+----------------------------------------------------------------------
+
+A simple model of population growth
+
+	$\ds \frac{dN}{dt} = (b-d)N $
+
+	$\ds \frac{dN}{dt} = rN$
+
+	This is the only differential equation you need to solve!
+
+	$N(t) = N(0) e^{rt} = N(0) \exp(rt)$
+
+	Bacteria example
+
+----------------------------------------------------------------------
+
+A more realistic model of population growth
+
+	Populations don't grow forever
+
+	Probably the birth rate will decline if the population is too crowded
+
+	Let's let the birth rate go down as population goes up:
+
+	$\ds \frac{dN}{dt} = (b_0 \exp(-N/N_b) - d)N$
+
+	\emph{We don't want to solve this equation!}
+
+----------------------------------------------------------------------
+
+What can we do instead?
+
+	Computer simulations: what will happen with particular parameters?
+
+	Qualitative analysis: what can we learn in general?
+
+----------------------------------------------------------------------
+
+Computer simulation
+
+SIDEFIG 0.8 bd_models/birth.bd.Rout-3.pdf
+
+----------------------------------------------------------------------
+
+What will this model do?
+
+SIDEFIG 0.8 bd_models/birth.bd.Rout-0.pdf
+
+----------------------------------------------------------------------
+
+What will this model do?
+
+SIDEFIG 0.8 bd_models/birth.bd.Rout-8.pdf
+
+----------------------------------------------------------------------
+
+What will this model do?
+
+SIDEFIG 0.8 bd_models/birth.bd.Rout-1.pdf
+
+----------------------------------------------------------------------
+
+What will this model do?
+
+SIDEFIG 0.8 bd_models/birth.bd.Rout-9.pdf
+
+----------------------------------------------------------------------
+
+Qualitative analysis
+
+	Find \emph{equilibria} -- points where the population will not change
+
+	Analyze equilibrium \emph{stability} -- if we are \emph{near} the
+	equilibrium, we will move toward it or away from it?
+
+----------------------------------------------------------------------
+
