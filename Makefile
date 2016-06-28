@@ -3,7 +3,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: dynamics.draft.pdf 
+target pngtarget pdftarget vtarget acrtarget: foundations.draft.pdf 
 
 ##################################################################
 
@@ -52,6 +52,8 @@ fitting.pages: fitting.draft.pdf
 Sources += ntu.txt
 
 dynamics.draft.pdf: dynamics.txt
+
+foundations.draft.pdf: foundations.txt
 
 ##################################################################
 
@@ -158,6 +160,12 @@ family/%: family
 
 family:
 	$(LN) $(gitroot)/SIR_model_family $@
+
+bd_models/%: bd_models
+	cd bd_models && $(MAKE) $*
+
+bd_models:
+	$(LN) $(gitroot)/Birth_death_models/ $@
 
 SIR_sims:
 SIR_sims/%: SIR_sims
