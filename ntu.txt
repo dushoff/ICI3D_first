@@ -1,12 +1,15 @@
 
-Tutorial
-
-* dynamical models as a bridge
-
-* simple models (discrete and continuous time, exponential growth)
-
 Lectures
 
-* Fitting models to data
+	Heterogeneity
 
-* Statistics and statistical philosophy
+	Confronting models with data 
+
+		Levin class lecture?
+
+		Pulliam/Hargrove/Williams stuff?
+
+	Statistics and statistical philosophy 
+
+	Approaches to dynamic fitting
+

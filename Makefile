@@ -3,7 +3,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: foundations.draft.pdf 
+pushtarget target pngtarget pdftarget vtarget acrtarget: foundations.draft.pdf 
 
 ##################################################################
 
@@ -12,9 +12,12 @@ target pngtarget pdftarget vtarget acrtarget: foundations.draft.pdf
 Sources = Makefile .gitignore README.md stuff.mk LICENSE.md
 include stuff.mk
 -include $(ms)/talk.def
+-include $(ms)/os.mk
 -include $(ms)/perl.def
 
 ##################################################################
+
+pushdir = $(gitroot)/scratch
 
 ## Lecture
 
@@ -51,6 +54,7 @@ fitting.pages: fitting.draft.pdf
 # Notes
 Sources += ntu.txt
 
+##### NO LONGER HERE!!
 Sources += dynamics.txt
 dynamics.draft.pdf: dynamics.txt
 
@@ -154,17 +158,21 @@ images:
 
 exponential/%: exponential
 	cd exponential && $(MAKE) $*
+	touch $@
+
 exponential:
 	$(LN) $(gitroot)/Exponential_figures $@
 
 family/%: family
 	cd family && $(MAKE) $*
+	touch $@
 
 family:
 	$(LN) $(gitroot)/SIR_model_family $@
 
 bd_models/%: bd_models
 	cd bd_models && $(MAKE) $*
+	touch $@
 
 bd_models:
 	$(LN) $(gitroot)/Birth_death_models/ $@
@@ -172,6 +180,7 @@ bd_models:
 SIR_sims:
 SIR_sims/%: SIR_sims
 	cd SIR_sims && $(MAKE) $*
+	touch $@
 
 SIR_sims:
 	$(LN) $(gitroot)/SIR_simulations $@
