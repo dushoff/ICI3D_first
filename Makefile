@@ -54,11 +54,11 @@ fitting.pages: fitting.draft.pdf
 # Notes
 Sources += ntu.txt
 
-##### NO LONGER HERE!!
-Sources += dynamics.txt
+##### NO LONGER HERE!! ~/git/disease_model_talks/
+# Sources += dynamics.txt
 dynamics.draft.pdf: dynamics.txt
 
-Sources += foundations.txt
+# Sources += foundations.txt
 foundations.draft.pdf: foundations.txt
 
 ##################################################################
