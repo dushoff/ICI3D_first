@@ -3,7 +3,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-pushtarget target pngtarget pdftarget vtarget acrtarget: foundations.draft.pdf 
+pushtarget target pngtarget pdftarget vtarget acrtarget: distance.Rout 
 
 ##################################################################
 
@@ -21,7 +21,9 @@ pushdir = $(gitroot)/scratch
 
 ## Lecture
 
-## Beamer stuff is copied _by default_ from talk directory. I have changed it to r/w form r/o. Need to do a real modularization: want to be able to "mark" slides for inclusion in different versions.
+# Need to do a real modularization: want to be able to "mark" slides for inclusion in different versions.
+
+## Beamer stuff is copied _by default_ from talk directory. I have changed it to r/w from r/o. 
 
 Sources += beamer.fmt beamer.tmp
 
