@@ -1,5 +1,8 @@
 # ICI3D
 ## Lectures for ICI3D and related (e.g., NTU)
+## This directory is being deprecated, but still has some R code in it that is used elsewhere.
+
+##################################################################
 ### Hooks for the editor to set the default target
 current: target
 
@@ -138,6 +141,8 @@ figs/prometheus.jpg:
 Sources += modelWorld.png Farr.png
 
 ##################################################################
+
+Sources += $(wildcard *.R)
 
 ## Directories
 
