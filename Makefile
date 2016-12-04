@@ -1,6 +1,7 @@
 # ICI3D
 ## Lectures for ICI3D and related (e.g., NTU)
 ## This directory is being deprecated, but still has some R code in it that is used elsewhere.
+## So where are the actual lectures, loser?
 
 ##################################################################
 ### Hooks for the editor to set the default target
