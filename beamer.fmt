@@ -41,6 +41,7 @@ SPACE \mbox{}
 # Lecture structure
 NULL NULLSLIDE
 NOSLIDE NULLSLIDE
+EXTRA NULLSLIDE
 
 ## Columns
 

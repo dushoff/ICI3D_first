@@ -2,11 +2,16 @@
 ## Lectures for ICI3D and related (e.g., NTU)
 ## This directory is deprecated, but still has some R code in it that is used elsewhere.
 
+## This directory is being deprecated, but still has some R code in it that is used elsewhere.
+## Related lectures are in 
+## * disease_model_talks/
+## * statistics_talks/
+
 ##################################################################
-### Hooks for the editor to set the default target
+
 current: target
 
-pushtarget target pngtarget pdftarget vtarget acrtarget: distance.Rout 
+pushtarget target pngtarget pdftarget vtarget acrtarget: evaluation.draft.pdf 
 
 ##################################################################
 
@@ -36,6 +41,7 @@ Sources += beamer.fmt beamer.tmp
 
 ## Model assessment lecture, given first at DAIDD 2015; I don't remember what I said for all the slides. Worked OK at MMED 2016, but should be reworked, with better notes about what I'm thinking.
 
+### Still here (DAIDD 2016), but should not be.
 Sources += evaluation.txt
 evaluation.draft.pdf: talkdir/slidecomm.sty evaluation.txt
 evaluation.pages: evaluation.draft.pdf
