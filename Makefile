@@ -1,6 +1,6 @@
 # ICI3D
 ## Lectures for ICI3D and related (e.g., NTU)
-## This directory is being deprecated, but still has some R code in it that is used elsewhere.
+## This directory is deprecated, but still has some R code in it that is used elsewhere.
 
 ##################################################################
 ### Hooks for the editor to set the default target
@@ -32,6 +32,8 @@ Sources += beamer.fmt beamer.tmp
 
 ##################################################################
 
+## Stats talks (should now be at 
+
 ## Model assessment lecture, given first at DAIDD 2015; I don't remember what I said for all the slides. Worked OK at MMED 2016, but should be reworked, with better notes about what I'm thinking.
 
 Sources += evaluation.txt
@@ -55,11 +57,14 @@ fitting.pages: fitting.draft.pdf
 # ~/Dropbox/ICI3D/WorkingWiki-export/Philosophy_lecture
 
 ##################################################################
+
+##### Dynamics talks: now at 
+##########  sd ~/git/disease_model_talks/
+
 # Developing for NTU
 # Notes
 Sources += ntu.txt
 
-##### NO LONGER HERE!! ~/git/disease_model_talks/
 # Sources += dynamics.txt
 dynamics.draft.pdf: dynamics.txt
 
